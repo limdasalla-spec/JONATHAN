@@ -21,36 +21,40 @@ header {
 }
 
 header h1 {
-    margin: 0;
     color: gold;
     letter-spacing: 3px;
 }
 
 nav {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
+    padding: 10px 20px;
     background: #111;
 }
 
-nav a {
+nav .links a {
     color: white;
-    padding: 15px 20px;
+    margin: 0 10px;
     text-decoration: none;
 }
 
-nav a:hover {
+nav .links a:hover {
     color: gold;
 }
 
+.cart {
+    color: gold;
+    font-weight: bold;
+}
+
 .hero {
-    height: 400px;
+    height: 350px;
     background: url('https://images.unsplash.com/photo-1524592094714-0f0654e20314') center/cover;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 2.5em;
+    font-size: 2em;
     font-weight: bold;
-    text-shadow: 0 0 10px black;
 }
 
 .container {
@@ -87,35 +91,38 @@ nav a:hover {
 }
 
 .price {
-    font-size: 1.2em;
     margin: 10px 0;
 }
 
 button {
-    padding: 10px 15px;
-    border: none;
+    padding: 10px;
     background: gold;
-    color: black;
+    border: none;
     cursor: pointer;
-    border-radius: 5px;
     font-weight: bold;
+    border-radius: 5px;
 }
 
 button:hover {
     background: #ffd700;
 }
 
-footer {
+.cart-box {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
     background: black;
+    border: 1px solid gold;
+    padding: 20px;
+    width: 250px;
+    display: none;
+}
+
+footer {
     text-align: center;
     padding: 20px;
     border-top: 2px solid gold;
     margin-top: 40px;
-}
-
-/* simple click animation */
-button:active {
-    transform: scale(0.95);
 }
 </style>
 </head>
@@ -128,10 +135,14 @@ button:active {
 </header>
 
 <nav>
-    <a href="#">Home</a>
-    <a href="#">Collection</a>
-    <a href="#">About</a>
-    <a href="#">Contact</a>
+    <div class="links">
+        <a href="#">Home</a>
+        <a href="#">Collection</a>
+        <a href="#">Contact</a>
+    </div>
+    <div class="cart" onclick="toggleCart()">
+        🛒 Cart (<span id="cart-count">0</span>)
+    </div>
 </nav>
 
 <div class="hero">
@@ -139,58 +150,69 @@ button:active {
 </div>
 
 <div class="container">
-    <h2>Featured Collection</h2>
+    <h2>Collection</h2>
 
     <div class="products">
 
         <div class="product">
             <img src="https://images.unsplash.com/photo-1522312346375-d1a52e2b99b3">
-            <h3>KNOX Silver Core</h3>
+            <h3>Silver Core</h3>
             <p class="price">$199</p>
-            <button onclick="alert('Added to cart!')">Buy Now</button>
+            <button onclick="addToCart(199)">Buy</button>
         </div>
 
         <div class="product">
             <img src="https://images.unsplash.com/photo-1547996160-81dfa63595aa">
-            <h3>KNOX Gold Elite</h3>
+            <h3>Gold Elite</h3>
             <p class="price">$349</p>
-            <button onclick="alert('Added to cart!')">Buy Now</button>
+            <button onclick="addToCart(349)">Buy</button>
         </div>
 
         <div class="product">
             <img src="https://images.unsplash.com/photo-1508057198894-247b23fe5ade">
-            <h3>KNOX Black Phantom</h3>
+            <h3>Black Phantom</h3>
             <p class="price">$279</p>
-            <button onclick="alert('Added to cart!')">Buy Now</button>
-        </div>
-
-        <div class="product">
-            <img src="https://images.unsplash.com/photo-1516574187841-cb9cc2ca948b">
-            <h3>KNOX Chrono X</h3>
-            <p class="price">$399</p>
-            <button onclick="alert('Added to cart!')">Buy Now</button>
-        </div>
-
-        <div class="product">
-            <img src="https://images.unsplash.com/photo-1596464716127-f2a82984de30">
-            <h3>KNOX Steel Sport</h3>
-            <p class="price">$229</p>
-            <button onclick="alert('Added to cart!')">Buy Now</button>
-        </div>
-
-        <div class="product">
-            <img src="https://images.unsplash.com/photo-1585386959984-a4155224a1ad">
-            <h3>KNOX Midnight Pro</h3>
-            <p class="price">$319</p>
-            <button onclick="alert('Added to cart!')">Buy Now</button>
+            <button onclick="addToCart(279)">Buy</button>
         </div>
 
     </div>
 </div>
 
+<div class="cart-box" id="cart-box">
+    <h3>Your Cart</h3>
+    <p>Items: <span id="items">0</span></p>
+    <p>Total: $<span id="total">0</span></p>
+    <button onclick="checkout()">Checkout</button>
+</div>
+
 <footer>
-    <p>© 2026 KNOX Watches — Built for Time. Designed for Power.</p>
+    <p>© 2026 KNOX Watches</p>
 </footer>
+
+<script>
+let count = 0;
+let total = 0;
+
+function addToCart(price) {
+    count++;
+    total += price;
+
+    document.getElementById("cart-count").innerText = count;
+    document.getElementById("items").innerText = count;
+    document.getElementById("total").innerText = total;
+
+    alert("Added to cart!");
+}
+
+function toggleCart() {
+    let box = document.getElementById("cart-box");
+    box.style.display = box.style.display === "block" ? "none" : "block";
+}
+
+function checkout() {
+    alert("Checkout coming soon 💳");
+}
+</script>
 
 </body>
 </html>
