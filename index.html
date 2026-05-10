@@ -1,218 +1,289 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>KNOX Watches</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>KNOX Luxury Watches</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700;900&display=swap" rel="stylesheet">
 
-<style>
-body {
-    margin: 0;
-    font-family: 'Segoe UI', sans-serif;
-    background: #0d0d0d;
-    color: #fff;
-}
+  <style>
+    * {
+      font-family: 'Montserrat', sans-serif;
+      scroll-behavior: smooth;
+    }
 
-header {
-    background: black;
-    padding: 20px;
-    text-align: center;
-    border-bottom: 2px solid gold;
-}
+    body {
+      background: #000;
+      overflow-x: hidden;
+    }
 
-header h1 {
-    color: gold;
-    letter-spacing: 3px;
-}
+    .hero-bg {
+      background-image: linear-gradient(to bottom, rgba(0,0,0,0.55), rgba(0,0,0,0.8)),
+      url('https://images.unsplash.com/photo-1508057198894-247b23fe5ade?q=80&w=1600&auto=format&fit=crop');
+      background-size: cover;
+      background-position: center;
+    }
 
-nav {
-    display: flex;
-    justify-content: space-between;
-    padding: 10px 20px;
-    background: #111;
-}
+    .parallax {
+      background-attachment: fixed;
+    }
 
-nav .links a {
-    color: white;
-    margin: 0 10px;
-    text-decoration: none;
-}
+    .glass {
+      background: rgba(255,255,255,0.05);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255,255,255,0.08);
+    }
 
-nav .links a:hover {
-    color: gold;
-}
+    .watch-card:hover img {
+      transform: scale(1.08);
+    }
 
-.cart {
-    color: gold;
-    font-weight: bold;
-}
+    .watch-card img {
+      transition: 0.7s ease;
+    }
 
-.hero {
-    height: 350px;
-    background: url('https://images.unsplash.com/photo-1524592094714-0f0654e20314') center/cover;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 2em;
-    font-weight: bold;
-}
+    .fade-up {
+      animation: fadeUp 1s ease forwards;
+    }
 
-.container {
-    padding: 40px;
-    text-align: center;
-}
-
-.products {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 25px;
-}
-
-.product {
-    background: #111;
-    border: 1px solid gold;
-    border-radius: 10px;
-    padding: 20px;
-    transition: 0.3s;
-}
-
-.product:hover {
-    transform: scale(1.05);
-    box-shadow: 0 0 20px gold;
-}
-
-.product img {
-    width: 100%;
-    border-radius: 10px;
-}
-
-.product h3 {
-    color: gold;
-}
-
-.price {
-    margin: 10px 0;
-}
-
-button {
-    padding: 10px;
-    background: gold;
-    border: none;
-    cursor: pointer;
-    font-weight: bold;
-    border-radius: 5px;
-}
-
-button:hover {
-    background: #ffd700;
-}
-
-.cart-box {
-    position: fixed;
-    right: 20px;
-    bottom: 20px;
-    background: black;
-    border: 1px solid gold;
-    padding: 20px;
-    width: 250px;
-    display: none;
-}
-
-footer {
-    text-align: center;
-    padding: 20px;
-    border-top: 2px solid gold;
-    margin-top: 40px;
-}
-</style>
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(40px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
 </head>
 
-<body>
+<body class="text-white">
 
-<header>
-    <h1>KNOX</h1>
-    <p>Precision Meets Power</p>
-</header>
+  <!-- HERO -->
+  <section class="hero-bg h-screen flex flex-col justify-between px-8 md:px-20 py-10 parallax">
 
-<nav>
-    <div class="links">
-        <a href="#">Home</a>
-        <a href="#">Collection</a>
-        <a href="#">Contact</a>
+    <header class="flex items-center justify-between fade-up">
+      <h1 class="text-3xl md:text-5xl font-black tracking-[0.4em]">
+        KNOX
+      </h1>
+
+      <nav class="hidden md:flex gap-10 uppercase text-sm tracking-[0.3em] text-zinc-300">
+        <a href="#collection" class="hover:text-white transition">Collection</a>
+        <a href="#craft" class="hover:text-white transition">Craftsmanship</a>
+        <a href="#about" class="hover:text-white transition">About</a>
+      </nav>
+    </header>
+
+    <div class="max-w-5xl pb-20 fade-up">
+      <p class="uppercase tracking-[0.4em] text-zinc-400 text-xs md:text-sm mb-6">
+        Swiss Inspired Luxury Engineering
+      </p>
+
+      <h2 class="text-5xl md:text-8xl font-black leading-none">
+        TIME<br>
+        REDEFINED
+      </h2>
+
+      <p class="mt-8 text-zinc-300 text-lg max-w-2xl leading-relaxed">
+        KNOX combines futuristic engineering with luxury craftsmanship. Built for collectors who demand bold architecture, lightweight materials, and uncompromising precision.
+      </p>
+
+      <div class="mt-10 flex gap-5 flex-wrap">
+        <button class="bg-white text-black px-8 py-4 rounded-full font-semibold hover:scale-105 transition duration-300">
+          Explore Collection
+        </button>
+
+        <button class="border border-zinc-600 px-8 py-4 rounded-full hover:bg-white hover:text-black transition duration-300">
+          Watch Film
+        </button>
+      </div>
     </div>
-    <div class="cart" onclick="toggleCart()">
-        🛒 Cart (<span id="cart-count">0</span>)
+  </section>
+
+  <!-- COLLECTION -->
+  <section id="collection" class="py-28 px-8 md:px-20 bg-gradient-to-b from-black to-zinc-950">
+
+    <div class="flex flex-col md:flex-row justify-between items-end gap-10 mb-16">
+      <div>
+        <p class="uppercase tracking-[0.4em] text-zinc-500 text-xs mb-4">
+          Signature Models
+        </p>
+
+        <h3 class="text-4xl md:text-6xl font-bold">
+          The KNOX Collection
+        </h3>
+      </div>
+
+      <p class="max-w-xl text-zinc-400 leading-relaxed">
+        Every KNOX timepiece is assembled with obsessive detail using carbon composites, sapphire crystal, and skeletonized movement architecture.
+      </p>
     </div>
-</nav>
 
-<div class="hero">
-    Luxury Redefined
-</div>
+    <div class="grid md:grid-cols-3 gap-8">
 
-<div class="container">
-    <h2>Collection</h2>
-
-    <div class="products">
-
-        <div class="product">
-            <img src="https://images.unsplash.com/photo-1522312346375-d1a52e2b99b3">
-            <h3>Silver Core</h3>
-            <p class="price">$199</p>
-            <button onclick="addToCart(199)">Buy</button>
+      <!-- CARD -->
+      <div class="watch-card glass rounded-[2rem] overflow-hidden hover:-translate-y-3 transition duration-500">
+        <div class="h-[420px] overflow-hidden">
+          <img src="https://images.unsplash.com/photo-1523170335258-f5ed11844a49?q=80&w=1200&auto=format&fit=crop"
+            class="w-full h-full object-cover" alt="KNOX RMX-01">
         </div>
 
-        <div class="product">
-            <img src="https://images.unsplash.com/photo-1547996160-81dfa63595aa">
-            <h3>Gold Elite</h3>
-            <p class="price">$349</p>
-            <button onclick="addToCart(349)">Buy</button>
+        <div class="p-8">
+          <h4 class="text-2xl font-bold mb-3">KNOX RMX-01</h4>
+          <p class="text-zinc-400 leading-relaxed mb-6">
+            Carbon titanium skeleton chronograph crafted for precision and speed.
+          </p>
+
+          <button class="uppercase text-sm tracking-[0.3em] border-b border-zinc-600 pb-2">
+            Discover
+          </button>
+        </div>
+      </div>
+
+      <!-- CARD -->
+      <div class="watch-card glass rounded-[2rem] overflow-hidden hover:-translate-y-3 transition duration-500">
+        <div class="h-[420px] overflow-hidden">
+          <img src="https://images.unsplash.com/photo-1547996160-81dfa63595aa?q=80&w=1200&auto=format&fit=crop"
+            class="w-full h-full object-cover" alt="KNOX Eclipse">
         </div>
 
-        <div class="product">
-            <img src="https://images.unsplash.com/photo-1508057198894-247b23fe5ade">
-            <h3>Black Phantom</h3>
-            <p class="price">$279</p>
-            <button onclick="addToCart(279)">Buy</button>
+        <div class="p-8">
+          <h4 class="text-2xl font-bold mb-3">KNOX Eclipse</h4>
+          <p class="text-zinc-400 leading-relaxed mb-6">
+            A futuristic tourbillon built with aerospace-inspired materials.
+          </p>
+
+          <button class="uppercase text-sm tracking-[0.3em] border-b border-zinc-600 pb-2">
+            Discover
+          </button>
         </div>
+      </div>
+
+      <!-- CARD -->
+      <div class="watch-card glass rounded-[2rem] overflow-hidden hover:-translate-y-3 transition duration-500">
+        <div class="h-[420px] overflow-hidden">
+          <img src="https://images.unsplash.com/photo-1522312346375-d1a52e2b99b3?q=80&w=1200&auto=format&fit=crop"
+            class="w-full h-full object-cover" alt="KNOX Phantom">
+        </div>
+
+        <div class="p-8">
+          <h4 class="text-2xl font-bold mb-3">KNOX Phantom</h4>
+          <p class="text-zinc-400 leading-relaxed mb-6">
+            Minimal black ceramic design engineered for modern collectors.
+          </p>
+
+          <button class="uppercase text-sm tracking-[0.3em] border-b border-zinc-600 pb-2">
+            Discover
+          </button>
+        </div>
+      </div>
 
     </div>
-</div>
+  </section>
 
-<div class="cart-box" id="cart-box">
-    <h3>Your Cart</h3>
-    <p>Items: <span id="items">0</span></p>
-    <p>Total: $<span id="total">0</span></p>
-    <button onclick="checkout()">Checkout</button>
-</div>
+  <!-- CRAFTSMANSHIP -->
+  <section id="craft" class="py-32 px-8 md:px-20 relative overflow-hidden">
 
-<footer>
-    <p>© 2026 KNOX Watches</p>
-</footer>
+    <div class="absolute top-0 left-0 w-96 h-96 bg-white opacity-10 blur-[150px]"></div>
+    <div class="absolute bottom-0 right-0 w-96 h-96 bg-zinc-500 opacity-10 blur-[150px]"></div>
 
-<script>
-let count = 0;
-let total = 0;
+    <div class="relative z-10 grid lg:grid-cols-2 gap-16 items-center">
 
-function addToCart(price) {
-    count++;
-    total += price;
+      <div>
+        <p class="uppercase tracking-[0.4em] text-zinc-500 text-xs mb-4">
+          Precision Craftsmanship
+        </p>
 
-    document.getElementById("cart-count").innerText = count;
-    document.getElementById("items").innerText = count;
-    document.getElementById("total").innerText = total;
+        <h3 class="text-4xl md:text-7xl font-black leading-tight mb-8">
+          ENGINEERED<br>
+          FOR THE FUTURE
+        </h3>
 
-    alert("Added to cart!");
-}
+        <p class="text-zinc-400 text-lg leading-relaxed mb-10 max-w-xl">
+          Inspired by motorsport, architecture, and advanced mechanics, every KNOX watch is designed to perform under extreme conditions while maintaining timeless luxury.
+        </p>
 
-function toggleCart() {
-    let box = document.getElementById("cart-box");
-    box.style.display = box.style.display === "block" ? "none" : "block";
-}
+        <div class="grid grid-cols-2 gap-10">
+          <div>
+            <h4 class="text-5xl font-bold">72H</h4>
+            <p class="text-zinc-500 mt-2">Power Reserve</p>
+          </div>
 
-function checkout() {
-    alert("Checkout coming soon 💳");
-}
-</script>
+          <div>
+            <h4 class="text-5xl font-bold">5 ATM</h4>
+            <p class="text-zinc-500 mt-2">Water Resistance</p>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <img src="https://images.unsplash.com/photo-1612817159949-195b6eb9e31a?q=80&w=1200&auto=format&fit=crop"
+          class="rounded-[3rem] border border-zinc-800 shadow-2xl"
+          alt="Luxury Watch">
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FULL WIDTH -->
+  <section class="relative h-[90vh] flex items-center justify-center text-center overflow-hidden">
+
+    <img src="https://images.unsplash.com/photo-1511389026070-a14ae610a1be?q=80&w=1600&auto=format&fit=crop"
+      class="absolute inset-0 w-full h-full object-cover"
+      alt="Luxury Background">
+
+    <div class="absolute inset-0 bg-black/70"></div>
+
+    <div class="relative z-10 max-w-4xl px-8">
+      <p class="uppercase tracking-[0.5em] text-zinc-400 text-xs mb-6">
+        Beyond Timekeeping
+      </p>
+
+      <h3 class="text-5xl md:text-8xl font-black leading-none mb-8">
+        A SYMBOL<br>
+        OF VISION
+      </h3>
+
+      <p class="text-zinc-300 text-lg leading-relaxed max-w-2xl mx-auto">
+        KNOX is built for innovators, athletes, collectors, and creators who embrace performance-driven luxury.
+      </p>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer id="about" class="border-t border-zinc-900 py-14 px-8 md:px-20">
+
+    <div class="flex flex-col md:flex-row justify-between gap-10">
+
+      <div>
+        <h2 class="text-3xl font-black tracking-[0.4em] mb-4">KNOX</h2>
+
+        <p class="text-zinc-500 max-w-sm leading-relaxed">
+          Luxury performance watches inspired by advanced engineering and timeless innovation.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-2 gap-12 text-sm uppercase tracking-[0.2em] text-zinc-400">
+        <div class="space-y-4">
+          <p>Collection</p>
+          <p>Craftsmanship</p>
+          <p>Boutiques</p>
+        </div>
+
+        <div class="space-y-4">
+          <p>Instagram</p>
+          <p>YouTube</p>
+          <p>Contact</p>
+        </div>
+      </div>
+
+    </div>
+  </footer>
 
 </body>
 </html>
